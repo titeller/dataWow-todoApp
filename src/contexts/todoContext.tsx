@@ -70,12 +70,7 @@ const TodoProvider = ({ children }: TodoProviderType) => {
     const { data } = await axios.delete(`${todosApiPath}/todos/${id}`);
 
     if (data) {
-      const newTodosRemoved = todos.filter((todo: ITodo) => {
-        if (todo.id === id) {
-          return;
-        }
-        return todo;
-      });
+      const newTodosRemoved = todos.filter((todo: ITodo) => todo.id !== id);
       setTodos(newTodosRemoved);
     }
   };
