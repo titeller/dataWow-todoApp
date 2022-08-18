@@ -1,0 +1,266 @@
+.Text-danger {
+  color: #E07C7C;
+}
+
+.Button-primary {
+  background: #585292;
+  color: #FFFFFF;
+  font-weight: 400;
+  font-size: 14px;
+  border-radius: 999px;
+  outline: none;
+  border: none;
+  padding: 10px 17px;
+  cursor: pointer;
+}
+
+.Input-text {
+  font-weight: 400;
+  color: #2E2E2E;
+  background: #FFFFFF;
+  border-radius: 9999px;
+  font-size: 16px;
+  padding: 14px 20px;
+  width: 100%;
+  outline: none;
+  border: none;
+}
+.Input-text::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: #BCBCBC;
+  opacity: 1; /* Firefox */
+}
+
+.Input-text:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: #BCBCBC;;
+}
+
+.Input-text::-ms-input-placeholder { /* Microsoft Edge */
+  color: #BCBCBC;;
+}
+
+.App {
+  background: #F5F5F5;
+  border-radius: 20px;
+  max-width: 720px;
+  margin: 42px auto;
+  padding: 63px 101px 61px;
+}
+
+.Progress {
+  background: #E07C7C;
+  border-radius: 20px;
+  width: 100%;
+  padding: 19px 18px 25px;
+  margin-bottom: 33px;
+}
+
+.Progress-label {
+  font-size: 28px;
+  font-weight: 500;
+  color: #FFFFFF;
+  margin-bottom: 12px;
+}
+
+.Progress-line {
+  position: relative;
+  background: #3B3B3B;
+  height: 7.34px;
+  width: 100%;
+  border-radius: 999px;
+  margin-bottom: 12px;
+}
+
+.Progress-line-current {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: #FFFFFF;
+  height: 7.34px;
+  border-radius: 999px;
+  transition: all 1s;
+}
+
+.Progress-text {
+  color: #EBB9B8;
+  font-size: 16px;
+}
+
+.Todos-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.Todos-label {
+  color: #000000;
+  font-size: 24px;
+  font-weight: 500;
+}
+
+.Todos-select {
+  position: relative;
+  width: 100%;
+  max-width: 110px;
+}
+
+.Todos-select > select {
+  outline: none;
+  width: 100%;
+  padding: 7px;
+  border-radius: 10px;
+  border: none;
+  background: #FFFFFF;
+  color: #000000;
+  font-size: 13px;
+  line-height: 15px;
+  border-right: 10px solid transparent
+}
+
+.Todos-list {
+  margin-top: 16px;
+}
+
+.Todos-list > * {
+  margin-bottom: 16px;
+}
+
+.Todos {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 6px 0px 20px;
+  background: #FFFFFF;
+  border-radius: 9999px;
+  height: 46px;
+}
+
+.Todos-title {
+  padding: 0 16px;
+  flex: 1;
+}
+
+.Todos-title > input {
+  color: #2E2E2E;
+  width: 100%;
+  font-size: 16px;
+  outline: none;
+  border: none;
+  background: transparent;
+}
+
+.Todos-title.completed > input {
+  text-decoration-line: line-through;
+  color: #A9A9A9;
+}
+
+.Todos-checkbox {
+  width: 22px;
+}
+
+.Checkbox {
+  display: block;
+  position: relative;
+  margin-bottom: 20px;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.Checkbox input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.Checkbox-checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 22px;
+  width: 22px;
+  background-color: #FFFFFF;
+  border-radius: 6px;
+  border: 2px solid #585292;
+}
+
+.Checkbox:hover input ~ .Checkbox-checkmark {
+  background-color: #F5F5F5;
+}
+
+.Checkbox input:checked ~ .Checkbox-checkmark {
+  background-color: #585292;
+}
+
+.Checkbox-checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.Checkbox input:checked ~ .Checkbox-checkmark:after {
+  display: block;
+}
+
+.Checkbox .Checkbox-checkmark:after {
+  left: 6px;
+  top: 2px;
+  width: 5px;
+  height: 10px;
+  border: solid #FFFFFF;
+  border-width: 0 2px 2px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.dropdown-wrapper {
+  cursor: pointer;
+  padding: 5px 5px 10px;
+  border-radius: 999px;
+}
+.dropdown-wrapper:hover {
+  background: #E9E9E9;
+}
+
+.dropdown {
+  position: relative;
+}
+
+.dropdown-menus {
+  position: absolute;
+  top: -10px;
+  right: -12px;
+  list-style: none;
+  display: none;
+  background: #FFFFFF;
+  box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  padding: 8px 0;
+  z-index: 999;
+}
+
+.dropdown-menus.open {
+  display: block;
+}
+
+.dropdown-menus > li {
+  padding: 8px 22px;
+  background: #FFFFFF;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.dropdown-menus > li:hover {
+  background: #F5F5F5;
+}
+
+@media only screen and (max-width: 768px) {
+  .App {
+    padding: 10px;
+    margin: 10px;
+  }
+}
