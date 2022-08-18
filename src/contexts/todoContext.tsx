@@ -1,4 +1,4 @@
-import React, { PropsWithChildren, useState, useEffect, createContext } from 'react';
+import React, { useState, useEffect, createContext } from 'react';
 import axios from 'axios'
 
 import { TodoContextType, ITodo } from '../@types/todo';
@@ -27,12 +27,13 @@ const TodoProvider = ({ children }: TodoProviderType) => {
   }, []);
 
   const setTodoEditable = (id: string, editable: boolean) => {
-    todos.filter((todo: ITodo) => {
+    const newTodos = todos.filter((todo: ITodo) => {
       if (todo.id === id) {
         todo.editable = editable;
-        setTodos([...todos]);
       }
+      return todo;
     });
+    setTodos(newTodos);
   };
 
   const addTodo = async (title: string) => {
@@ -53,22 +54,29 @@ const TodoProvider = ({ children }: TodoProviderType) => {
       title,
       completed
     });
-    todos.filter((todo: ITodo) => {
-      if (todo.id === id) {
-        todo.completed = completed;
-        setTodos([...todos]);
-      }
-    });
+
+    if (data) {
+      const newTodos = todos.filter((todo: ITodo) => {
+        if (todo.id === id) {
+          todo.completed = completed;
+        }
+        return todo;
+      });
+      setTodos(newTodos);
+    }
   };
 
   const removeTodo = async (id: string) => {
     const { data } = await axios.delete(`${todosApiPath}/todos/${id}`);
-    const newTodosRemoved = todos.filter((todo: ITodo) => {
-      if (todo.id !== id) {
-        return todo
-      }
-    });
-    setTodos(newTodosRemoved);
+
+    if (data) {
+      const newTodosRemoved = todos.filter((todo: ITodo) => {
+        if (todo.id !== id) {
+          return todo;
+        }
+      });
+      setTodos(newTodosRemoved);
+    }
   };
 
   const getTodos = async (filter: any) => {

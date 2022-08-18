@@ -3,7 +3,6 @@ import React, { useState, useContext, KeyboardEvent, ChangeEvent } from 'react';
 import { TodoContextType, ITodo } from '../@types/todo';
 import { TodoContext } from '../contexts/todoContext';
 
-import Progess from '../components/Progress';
 import Todo from '../components/Todo';
 import Progress from '../components/Progress';
 
