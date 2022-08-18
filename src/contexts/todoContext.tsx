@@ -71,9 +71,10 @@ const TodoProvider = ({ children }: TodoProviderType) => {
 
     if (data) {
       const newTodosRemoved = todos.filter((todo: ITodo) => {
-        if (todo.id !== id) {
-          return todo;
+        if (todo.id === id) {
+          return;
         }
+        return todo;
       });
       setTodos(newTodosRemoved);
     }
