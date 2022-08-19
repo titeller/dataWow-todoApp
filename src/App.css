@@ -125,6 +125,7 @@
 }
 
 .Todos {
+  position: relative;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -155,6 +156,10 @@
 
 .Todos-checkbox {
   width: 22px;
+}
+
+.Todo-add {
+  position: relative;
 }
 
 .Checkbox {
@@ -256,6 +261,59 @@
 
 .dropdown-menus > li:hover {
   background: #F5F5F5;
+}
+
+.todos-loader {
+  min-height: 250px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.Todo-loader {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 9999px;
+}
+
+.Loader {
+  width: 28px;
+  height: 28px;
+  border: 5px solid #E07C7C;
+  border-radius: 50%;
+  display: inline-block;
+  box-sizing: border-box;
+  position: relative;
+  animation: pulse 1s linear infinite;
+}
+.Loader:after {
+  content: '';
+  position: absolute;
+  width: 28px;
+  height: 28px;
+  border: 5px solid #E07C7C;
+  border-radius: 50%;
+  display: inline-block;
+  box-sizing: border-box;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  animation: scaleUp 1s linear infinite;
+}
+
+@keyframes scaleUp {
+  0% { transform: translate(-50%, -50%) scale(0) }
+  60% , 100% { transform: translate(-50%, -50%)  scale(1)}
+}
+@keyframes pulse {
+  0% , 60% , 100%{ transform:  scale(1) }
+  80% { transform:  scale(1.2)}
 }
 
 @media only screen and (max-width: 768px) {

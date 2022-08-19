@@ -2,6 +2,7 @@ import React, { useState, useRef, ChangeEvent, MutableRefObject, KeyboardEvent }
 
 import { ITodo } from '../@types/todo';
 import Dropdown from './Dropdown';
+import Loader from './Loader';
 
 type Props = {
   todo: ITodo;
@@ -15,7 +16,8 @@ const Todo:React.FC<Props> = ({
     id,
     title,
     completed,
-    editable
+    isEditable,
+    isUpdateTodoLoading
   },
   updateTodo,
   removeTodo,
@@ -31,21 +33,24 @@ const Todo:React.FC<Props> = ({
     }, 50)
   };
 
-  const handleTitleUpdateKeyDown = (event: KeyboardEvent<HTMLInputElement>) => {
-    if (event.key === 'Enter') {
-      handleTitleUpdate();
-    }
-  };
-
+  
   const handleCompletUpdate = () => {
     updateTodo(id, title, !completed);
     setTitleInput(titleInput);
   };
 
   const handleTitleUpdate = () => {
-    updateTodo(id, titleInput, completed);
-    setTodoEditable(id, false);
-    setTitleInput(titleInput);
+    if (titleInput) {
+      updateTodo(id, titleInput, completed);
+      setTodoEditable(id, false);
+      setTitleInput(titleInput);
+    }
+  };
+
+  const handleTitleUpdateKeyDown = (event: KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === 'Enter') {
+      handleTitleUpdate();
+    }
   };
 
   const handleTitleChange = (event: ChangeEvent) => {
@@ -58,7 +63,7 @@ const Todo:React.FC<Props> = ({
 
   return (
     <div className="Todos">
-      {!editable && (
+      {!isEditable && (
         <div className="Todos-checkbox">
           <label className="Checkbox" htmlFor={`checkbox-${id}`}>
             <input
@@ -75,13 +80,13 @@ const Todo:React.FC<Props> = ({
         <input
           ref={titleInputRef}
           value={titleInput}
-          disabled={!editable}
+          disabled={!isEditable}
           onKeyDown={handleTitleUpdateKeyDown}
           onChange={handleTitleChange}
         />
       </div>
       <div>
-        {editable ? (
+        {isEditable ? (
           <button
             className="Button-primary"
             onClick={handleTitleUpdate}
@@ -103,6 +108,11 @@ const Todo:React.FC<Props> = ({
           </div>
         )}
       </div>
+      {isUpdateTodoLoading && (
+        <div className="Todo-loader">
+          <Loader />
+        </div>
+      )}
     </div>
   )
 }

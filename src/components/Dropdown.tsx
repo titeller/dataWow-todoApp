@@ -1,9 +1,9 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, ReactNode } from 'react';
 
 import DropdownSrc from '../images/dropdown.png';
 
 type Props = {
-  children: React.ReactNode
+  children: ReactNode;
 };
 
 const Dropdown:React.FC<Props> = ({ children }) => {

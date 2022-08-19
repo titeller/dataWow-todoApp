@@ -8,16 +8,28 @@ import Progress from '../components/Progress';
 
 import { todosFilterOptions } from '../constants/todos';
 import { getTodosCompletedCount, getTodosCompletedPercent } from '../utils/todos';
+import Loader from '../components/Loader';
 
 const Todos = () => {
-  const { todos, getTodos, addTodo, updateTodo, removeTodo, setTodoEditable } = useContext(TodoContext) as TodoContextType;
+  const {
+    todos,
+    getTodos,
+    addTodo,
+    updateTodo,
+    removeTodo,
+    setTodoEditable,
+    isTodosLoading,
+    isAddTodoLoading
+  } = useContext(TodoContext) as TodoContextType;
 
   const [titleInput, setTitleInput] = useState('')
 
   const handleTitleKeyDown = (event: KeyboardEvent<HTMLInputElement>) => {
     if (event.key === 'Enter') {
-      addTodo(titleInput);
-      setTitleInput('');
+      if (titleInput) {
+        addTodo(titleInput);
+        setTitleInput('');
+      }
     }
   };
 
@@ -57,25 +69,42 @@ const Todos = () => {
           </select>
         </div>
       </div>
-      <div className="Todos-list">
-        {todos.map((todo: ITodo) => (
-          <Todo
-            key={todo.id}
-            todo={todo}
-            updateTodo={updateTodo}
-            setTodoEditable={setTodoEditable}
-            removeTodo={removeTodo}
-          />
-        ))}
+      {
+        isTodosLoading ?
+          <div className="todos-loader">
+            <Loader />
+          </div>
+          :
+          <div className="Todos-list">
+            {todos.map((todo: ITodo) => (
+              <Todo
+                key={todo.id}
+                todo={todo}
+                updateTodo={updateTodo}
+                setTodoEditable={setTodoEditable}
+                removeTodo={removeTodo}
+              />
+          ))
+        }
+        </div>
+      }
+
+      <div className="Todos Todo-add">
+        <input
+          type="text"
+          className="Input-text"
+          placeholder="Add your todo..."
+          onKeyDown={handleTitleKeyDown}
+          onChange={handleTitleChange}
+          readOnly={isAddTodoLoading}
+          value={titleInput}
+        />
+        {isAddTodoLoading && (
+          <div className="Todo-loader">
+            <Loader />
+          </div>
+        )}
       </div>
-      <input
-        type="text"
-        className="Input-text"
-        placeholder="Add your todo..."
-        onKeyDown={handleTitleKeyDown}
-        onChange={handleTitleChange}
-        value={titleInput}
-      />
     </div>
   );
 };

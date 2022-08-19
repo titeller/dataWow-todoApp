@@ -3,6 +3,7 @@ import axios from 'axios'
 
 import { TodoContextType, ITodo } from '../@types/todo';
 import { todosApiPath } from '../constants/api';
+import { todoInitAddOn } from '../constants/todos';
 
 export const TodoContext = createContext<TodoContextType | null>(null);
 
@@ -12,24 +13,27 @@ type TodoProviderType = {
 
 const TodoProvider = ({ children }: TodoProviderType) => {
   const [todos, setTodos] = useState<ITodo[]>([]);
+  const [isTodosLoading, setIsTodosLoading] = useState<boolean>(true);
+  const [isAddTodoLoading, setIsAddTodoLoading] = useState<boolean>(false);
 
   useEffect(() => {
     const fetchData = async () => {
       const { data } = await axios.get(`${todosApiPath}/todos`)
-      const todoDataInit = data.map((todo: ITodo) => ({
+      const newTodos = data.map((todo: ITodo) => ({
         ...todo,
-        editable: false
+        ...todoInitAddOn
       }))
-      setTodos(todoDataInit);
+      setIsTodosLoading(false);
+      setTodos(newTodos);
     }
     
     fetchData();
   }, []);
 
-  const setTodoEditable = (id: string, editable: boolean) => {
-    const newTodos = todos.filter((todo: ITodo) => {
+  const setTodoEditable = (id: string, isEditable: boolean) => {
+    const newTodos = todos.map((todo: ITodo) => {
       if (todo.id === id) {
-        todo.editable = editable;
+        todo.isEditable = isEditable;
       }
       return todo;
     });
@@ -37,38 +41,65 @@ const TodoProvider = ({ children }: TodoProviderType) => {
   };
 
   const addTodo = async (title: string) => {
+    setIsAddTodoLoading(true);
+
     const { data } = await axios.post(`${todosApiPath}/todos`, {
       title,
       completed: false
     })
 
+    setIsAddTodoLoading(false);
+    
     const newTodo = {
       ...data,
-      editable: false
+      ...todoInitAddOn
     };
     setTodos([...todos, newTodo]);
   };
 
+  const updateTodosStateById = (id: string, data: any) => {
+    const newTodos = todos.map((todo: ITodo) => {
+      if (todo.id === id) {
+        todo = {
+          ...todo,
+          ...data
+        }
+      }
+      return todo;
+    });
+    setTodos(newTodos);
+  };
+
   const updateTodo = async (id: string, title: string, completed: boolean) => {
-    const { data } = await axios.put(`${todosApiPath}/todos/${id}`, {
+    updateTodosStateById(id, {
+      isUpdateTodoLoading: true
+    });
+
+    const dataRequest = {
       title,
       completed
+    };
+    const { data } = await axios.put(`${todosApiPath}/todos/${id}`, dataRequest);
+
+    updateTodosStateById(id, {
+      isUpdateTodoLoading: false
     });
 
     if (data) {
-      const newTodos = todos.filter((todo: ITodo) => {
-        if (todo.id === id) {
-          todo.completed = completed;
-        }
-        return todo;
-      });
-      setTodos(newTodos);
+      updateTodosStateById(id, dataRequest);
     }
   };
 
   const removeTodo = async (id: string) => {
+    updateTodosStateById(id, {
+      isUpdateTodoLoading: true
+    });
     const { data } = await axios.delete(`${todosApiPath}/todos/${id}`);
 
+    updateTodosStateById(id, {
+      isUpdateTodoLoading: false
+    });
+    
     if (data) {
       const newTodosRemoved = todos.filter((todo: ITodo) => todo.id !== id);
       setTodos(newTodosRemoved);
@@ -81,13 +112,15 @@ const TodoProvider = ({ children }: TodoProviderType) => {
       filters.push(`completed=${filter.completed}`);
     }
 
+    setIsTodosLoading(true);
     const filterRequest = filters.length > 0 ? `?${filters.join('&')}` : ''
     const { data } = await axios.get(`${todosApiPath}/todos${filterRequest}`)
-    const todoDataInit = data.map((todo: ITodo) => ({
+    const newTodos = data.map((todo: ITodo) => ({
       ...todo,
-      editable: false
+      ...todoInitAddOn
     }))
-    setTodos(todoDataInit);
+    setIsTodosLoading(false);
+    setTodos(newTodos);
   };
 
   return (
@@ -98,7 +131,9 @@ const TodoProvider = ({ children }: TodoProviderType) => {
         addTodo, 
         updateTodo,
         removeTodo,
-        setTodoEditable
+        setTodoEditable,
+        isTodosLoading,
+        isAddTodoLoading
       }}
     >
       {children}

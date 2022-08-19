@@ -11,4 +11,9 @@ export const todosFilterOptions = [
     label: 'Undone',
     value: 'false'
   }
-]
+];
+
+export const todoInitAddOn = {
+  isEditable: false,
+  isUpdateTodoLoading: false
+};
