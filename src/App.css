@@ -133,7 +133,7 @@
   text-overflow: ellipsis;
 }
 
-.Todos-title.completed > input {
+.Toodo-title-completed {
   text-decoration-line: line-through;
   color: #A9A9A9;
 }

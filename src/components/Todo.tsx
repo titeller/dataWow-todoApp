@@ -76,14 +76,18 @@ const Todo:React.FC<Props> = ({
           </label>
         </div>)
       }
-      <div className={`Todos-title ${completed ? 'completed' : ''}`}>
-        <input
-          ref={titleInputRef}
-          value={titleInput}
-          disabled={!isEditable}
-          onKeyDown={handleTitleUpdateKeyDown}
-          onChange={handleTitleChange}
-        />
+      <div className="Todos-title">
+        {!completed ? (
+          <input
+            ref={titleInputRef}
+            value={titleInput}
+            disabled={!isEditable}
+            onKeyDown={handleTitleUpdateKeyDown}
+            onChange={handleTitleChange}
+          />
+        ) : (
+          <div className="Toodo-title-completed">{title}</div>
+        )}
       </div>
       <div>
         {isEditable ? (
