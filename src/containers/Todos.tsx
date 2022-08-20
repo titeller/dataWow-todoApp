@@ -10,6 +10,7 @@ import { todosFilterOptions } from '../constants/todos';
 import { getTodosCompletedCount, getTodosCompletedPercent } from '../utils/todos';
 import Loader from '../components/Loader';
 import Select from '../components/Select';
+import CopyRight from '../components/CopyRight';
 
 const Todos = () => {
   const {
@@ -62,14 +63,10 @@ const Todos = () => {
       </div>
       {
         isTodosLoading ?
-          <div className="todos-loader">
-            <div className="todos-loader-wrapper">
+          <div className="Todos-loader">
+            <div className="Todos-loader-wrapper">
               <Loader />
-              <div className="todos-ref">
-                <h4>Copyright © 2022</h4>
-                <h2>Kitti Piyapan</h2>
-                <h6>All rights reserved.</h6>
-              </div>
+              <CopyRight />
             </div>
           </div>
           :

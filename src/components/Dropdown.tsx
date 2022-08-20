@@ -25,17 +25,17 @@ const Dropdown:FC<Props> = ({ children }) => {
   }, [isDropdownOpen])
   return (
     <div
-      className="dropdown-wrapper"
+      className="Dropdown-wrapper"
       onClick={() => setIsDropdownOpen(!isDropdownOpen)}>
       <div>
         <img
           src={DropdownSrc}
           alt="todo-dropdown"
-          className="dropdown-img"
+          className="Dropdown-img"
         />
-        <div className="dropdown" ref={ref as RefObject<HTMLDivElement>}>
+        <div className="Dropdown" ref={ref as RefObject<HTMLDivElement>}>
           <ul
-            className={`dropdown-menus ${isDropdownOpen ? 'open' : ''}`}
+            className={`Dropdown-menus ${isDropdownOpen ? 'open' : ''}`}
           >
             {children}
           </ul>

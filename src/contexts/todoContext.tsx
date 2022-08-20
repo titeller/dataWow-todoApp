@@ -19,7 +19,7 @@ const TodoProvider = ({ children }: TodoProviderType) => {
   const [isAddTodoLoading, setIsAddTodoLoading] = useState<boolean>(false);
 
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchData = async () => { 
       const url = `${todosApiPath}/todos`;
       const response = await get(url);
 
