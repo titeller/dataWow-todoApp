@@ -11,11 +11,7 @@ export const TodoContext = createContext<TodoContextType | null>(null);
 
 type TodoProviderType = {
   children: ReactNode;
-}
-
-type PostTodoResponse = {
-  data: ITodo;
-}
+};
 
 const TodoProvider = ({ children }: TodoProviderType) => {
   const [todos, setTodos] = useState<ITodo[]>([]);
@@ -28,7 +24,7 @@ const TodoProvider = ({ children }: TodoProviderType) => {
       const response = await get(url);
 
       setIsTodosLoading(false);
-      
+
       if (response?.data) {
         const { data } = response;
         const newTodos = data.map((todo: ITodo) => ({
