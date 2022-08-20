@@ -4,8 +4,8 @@ export interface ITodo {
   completed: boolean;
 
   // init add on state
-  isEditable: boolean;
-  isUpdateTodoLoading: boolean;
+  isEditable?: boolean;
+  isUpdateTodoLoading?: boolean;
 };
 
 export type TodoContextType = {
