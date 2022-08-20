@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, FC, RefObject, ChangeEvent } from 'react';
+import React, { useState, useEffect, useRef, FC, RefObject } from 'react';
 
 import SelectSrc from '../images/select.png';
 
