@@ -121,7 +121,7 @@
   flex: 1;
 }
 
-.Todos-title > input {
+.Toodo-title-text {
   color: #2E2E2E;
   width: 100%;
   font-size: 16px;
@@ -132,11 +132,7 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
-.Todos-title > input:disabled {
-  color: #2E2E2E;
-}
-
-.Toodo-title-completed {
+.Toodo-title-text.completed {
   text-decoration-line: line-through;
   color: #A9A9A9;
 }
