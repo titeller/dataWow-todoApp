@@ -330,6 +330,16 @@
   align-items: center;
 }
 
+.todos-loader-wrapper {
+  text-align: center;
+}
+
+.todos-ref {
+  margin: 15px 0;
+  font-weight: 500;
+  color: #A9A9A9;
+}
+
 .Todo-loader {
   position: absolute;
   left: 0;

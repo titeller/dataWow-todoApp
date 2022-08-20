@@ -107,14 +107,14 @@ const TodoProvider = ({ children }: TodoProviderType) => {
   };
 
   const getTodos = async (filter: any) => {
-    let filters = []
+    let filters = [];
     if (filter.completed) {
       filters.push(`completed=${filter.completed}`);
     }
 
     setIsTodosLoading(true);
-    const filterRequest = filters.length > 0 ? `?${filters.join('&')}` : ''
-    const { data } = await axios.get(`${todosApiPath}/todos${filterRequest}`)
+    const filterRequest = filters.length > 0 ? `?${filters.join('&')}` : '';
+    const { data } = await axios.get(`${todosApiPath}/todos${filterRequest}`);
     const newTodos = data.map((todo: ITodo) => ({
       ...todo,
       ...todoInitAddOn

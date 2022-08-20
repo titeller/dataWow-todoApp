@@ -63,7 +63,14 @@ const Todos = () => {
       {
         isTodosLoading ?
           <div className="todos-loader">
-            <Loader />
+            <div className="todos-loader-wrapper">
+              <Loader />
+              <div className="todos-ref">
+                <h4>Copyright © 2022</h4>
+                <h2>Kitti Piyapan</h2>
+                <h6>All rights reserved.</h6>
+              </div>
+            </div>
           </div>
           :
           <div className="Todos-list">

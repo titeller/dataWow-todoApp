@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef, FC, RefObject } from 'react';
 
-import SelectSrc from '../images/select.png';
+import SelectUpSrc from '../images/select-up.png';
+import SelectDownSrc from '../images/select-down.png';
 
 interface IOption {
   label: string;
@@ -35,7 +36,9 @@ const Dropdown:FC<Props> = ({ options, onSelectChange }) => {
   const onHandleSelectChange = (option: any) => {
     setCurrentOption(option);
     onSelectChange(option.value);
-  }
+  };
+
+  const SelectSrc = isSelectOpen ? SelectUpSrc : SelectDownSrc;
 
   return (
     <div
