@@ -1,5 +1,6 @@
 # Data Wow - TodoApp 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
 ![alt text](https://github.com/titeller/datawow-todoapp/blob/main/public/demo.png)
 
 ### Preview
