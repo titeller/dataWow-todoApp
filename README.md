@@ -1,6 +1,12 @@
 # Data Wow - TodoApp 
-
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![alt text](https://github.com/titeller/datawow-todoapp/blob/main/public/demo.png)
+
+### Preview
+[https://datawow-todoapp.netlify.app/](https://datawow-todoapp.netlify.app)
+
+### Json api server
+[https://datawow-todoapp-server.herokuapp.com](https://datawow-todoapp-server.herokuapp.com)
 
 ## Features in app
 
