@@ -132,6 +132,9 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
+.Todos-title > input:disabled {
+  color: #2E2E2E;
+}
 
 .Toodo-title-completed {
   text-decoration-line: line-through;
