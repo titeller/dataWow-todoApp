@@ -8,7 +8,7 @@
 ### Json api server
 [https://datawow-todoapp-server.herokuapp.com](https://datawow-todoapp-server.herokuapp.com)
 
-## Features in app
+## Features
 
 1. Add task
 2. Edit task
