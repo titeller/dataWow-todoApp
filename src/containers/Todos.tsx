@@ -9,6 +9,7 @@ import Progress from '../components/Progress';
 import { todosFilterOptions } from '../constants/todos';
 import { getTodosCompletedCount, getTodosCompletedPercent } from '../utils/todos';
 import Loader from '../components/Loader';
+import Select from '../components/Select';
 
 const Todos = () => {
   const {
@@ -37,9 +38,9 @@ const Todos = () => {
     setTitleInput(event.target.value);
   };
 
-  const handleFilterChange = (event: ChangeEvent<HTMLSelectElement>) => {
+  const handleFilterChange = (value: string) => {
     const filter = {
-      completed: event.target.value
+      completed: value
     };
     getTodos(filter);
   }
@@ -56,17 +57,7 @@ const Todos = () => {
       <div className="Todos-header">
         <p className="Todos-label">Tasks</p>
         <div className="Todos-select">
-          <select className="Todos-filter" onChange={handleFilterChange}>
-            {
-              todosFilterOptions.map((option, index) => (
-                <option
-                  key={index} 
-                  value={option.value}>
-                    {option.label}
-                  </option>
-              ))
-            }
-          </select>
+          <Select options={todosFilterOptions} onSelectChange={handleFilterChange} />
         </div>
       </div>
       {

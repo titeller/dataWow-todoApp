@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, ReactNode } from 'react';
+import React, { useState, useEffect, useRef, ReactNode, FC, RefObject } from 'react';
 
 import DropdownSrc from '../images/dropdown.png';
 
@@ -6,7 +6,7 @@ type Props = {
   children: ReactNode;
 };
 
-const Dropdown:React.FC<Props> = ({ children }) => {
+const Dropdown:FC<Props> = ({ children }) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   let ref = useRef<HTMLDivElement>(null);
   useEffect(() => {
@@ -33,7 +33,7 @@ const Dropdown:React.FC<Props> = ({ children }) => {
           alt="todo-dropdown"
           className="dropdown-img"
         />
-        <div className="dropdown" ref={ref as React.RefObject<HTMLDivElement>}>
+        <div className="dropdown" ref={ref as RefObject<HTMLDivElement>}>
           <ul
             className={`dropdown-menus ${isDropdownOpen ? 'open' : ''}`}
           >
