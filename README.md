@@ -1,5 +1,4 @@
 # Data Wow - TodoApp 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ![alt text](https://github.com/titeller/datawow-todoapp/blob/main/public/demo.gif)
 
@@ -22,6 +21,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 Ui design from [Figma](https://www.figma.com/file/3CJh1KDBSXHzUqqN3THmcD/Todos?node-id=0%3A1.).
 
 ## How to run
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ### `npm start`
 
