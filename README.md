@@ -1,10 +1,20 @@
-# Data wow - TodoApp 
+# Data Wow - TodoApp 
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## Features in app
 
-In the project directory, you can run:
+1. Add task
+2. Edit task
+3. Delete task
+4. Mark as done
+5. See what’s done
+6. Show progress (e.g. 40% done)
+
+## Ui design
+Ui design from [Figma](https://www.figma.com/file/3CJh1KDBSXHzUqqN3THmcD/Todos?node-id=0%3A1.).
+
+## How to run
 
 ### `npm start`
 
