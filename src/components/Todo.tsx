@@ -1,10 +1,10 @@
 import React, { useState, useRef, ChangeEvent, MutableRefObject, KeyboardEvent } from 'react';
 
-import { ITodoFunc } from '../@types/todo';
+import { TodoComponentType } from '../@types/todo';
 import Dropdown from './Dropdown';
 import Loader from './Loader';
 
-const Todo:React.FC<ITodoFunc> = ({
+const Todo:React.FC<TodoComponentType> = ({
   todo: {
     id,
     title,
@@ -26,7 +26,6 @@ const Todo:React.FC<ITodoFunc> = ({
     }, 50)
   };
 
-  
   const handleCompletUpdate = () => {
     updateTodo(id, title, !completed);
     setTitleInput(titleInput);

@@ -8,7 +8,7 @@ export interface ITodo {
   isUpdateTodoLoading?: boolean;
 };
 
-export interface ITodoFunc {
+export type TodoComponentType = {
   todo: ITodo;
   updateTodo: (id: string, title: string, completed: boolean) => void;
   removeTodo: (id: string) => void;
