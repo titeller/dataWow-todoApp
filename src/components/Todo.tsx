@@ -33,9 +33,8 @@ const Todo:React.FC<TodoComponentType> = ({
 
   const handleTitleUpdate = () => {
     if (titleInput) {
-      updateTodo(id, titleInput, completed);
       setTodoEditable(id, false);
-      setTitleInput(titleInput);
+      updateTodo(id, titleInput, completed);
     }
   };
 
