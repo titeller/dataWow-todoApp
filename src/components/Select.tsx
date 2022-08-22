@@ -2,18 +2,9 @@ import React, { useState, useEffect, useRef, FC, RefObject } from 'react';
 
 import SelectUpSrc from '../images/select-up.png';
 import SelectDownSrc from '../images/select-down.png';
+import { SelectType } from '../@types/select';
 
-interface IOption {
-  label: string;
-  value: string;
-};
-
-type Props = {
-  options: IOption[];
-  onSelectChange: (value: string) => void;
-};
-
-const Dropdown:FC<Props> = ({ options, onSelectChange }) => {
+const Dropdown:FC<SelectType> = ({ options, onSelectChange }) => {
   const [isSelectOpen, setIsSelectOpen] = useState(false);
   const [currentOption, setCurrentOption] = useState(options[0]);
   let ref = useRef<HTMLDivElement>(null);

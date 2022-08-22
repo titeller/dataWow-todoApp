@@ -1,9 +1,5 @@
 import React from 'react'
-
-type ProgressTypes = {
-  todosCompletedPercent: number;
-  todosCompletedCount: number;
-};
+import { ProgressTypes } from '../@types/progress'
 
 const Progress = ({
   todosCompletedPercent,

@@ -1,12 +1,9 @@
-import React, { useState, useEffect, useRef, ReactNode, FC, RefObject } from 'react';
+import React, { useState, useEffect, useRef, FC, RefObject } from 'react';
+import { DropdownType } from '../@types/dropdown';
 
 import DropdownSrc from '../images/dropdown.png';
 
-type Props = {
-  children: ReactNode;
-};
-
-const Dropdown:FC<Props> = ({ children }) => {
+const Dropdown:FC<DropdownType> = ({ children }) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   let ref = useRef<HTMLDivElement>(null);
   useEffect(() => {

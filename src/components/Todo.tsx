@@ -1,17 +1,10 @@
 import React, { useState, useRef, ChangeEvent, MutableRefObject, KeyboardEvent } from 'react';
 
-import { ITodo } from '../@types/todo';
+import { ITodoFunc } from '../@types/todo';
 import Dropdown from './Dropdown';
 import Loader from './Loader';
 
-type Props = {
-  todo: ITodo;
-  updateTodo: (id: string, title: string, completed: boolean) => void;
-  removeTodo: (id: string) => void;
-  setTodoEditable: (id: string, editable: boolean) => void;
-};
-
-const Todo:React.FC<Props> = ({
+const Todo:React.FC<ITodoFunc> = ({
   todo: {
     id,
     title,

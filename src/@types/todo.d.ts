@@ -8,6 +8,13 @@ export interface ITodo {
   isUpdateTodoLoading?: boolean;
 };
 
+export interface ITodoFunc {
+  todo: ITodo;
+  updateTodo: (id: string, title: string, completed: boolean) => void;
+  removeTodo: (id: string) => void;
+  setTodoEditable: (id: string, editable: boolean) => void;
+}
+
 export type TodoContextType = {
   todos: ITodo[];
   isTodosLoading: boolean;
