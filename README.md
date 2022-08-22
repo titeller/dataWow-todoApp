@@ -3,7 +3,7 @@
 ![alt text](https://github.com/titeller/datawow-todoapp/blob/main/public/demo.gif)
 
 ### Preview
-[https://datawow-todoapp.netlify.app/](https://datawow-todoapp.netlify.app)
+[https://datawow-todoapp.netlify.app](https://datawow-todoapp.netlify.app)
 
 ### Json api server
 [https://datawow-todoapp-server.herokuapp.com](https://datawow-todoapp-server.herokuapp.com)
